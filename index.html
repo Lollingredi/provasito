@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Device Detection</title>
+    <title>Selezione lingua</title>
     <style>
         /* Base styles that work for all devices */
         body {
@@ -103,10 +103,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>On what device are you viewing this site?</h1>
+        <h1>In which language do you want to navigate the site?</h1>
         <div class="btn-group">
-            <button id="mobileBtn">Mobile</button>
-            <button id="desktopBtn">Desktop</button>
+            <button id="mobileBtn">Italiano</button>
+            <button id="desktopBtn">Inglese</button>
         </div>
     </div>
 
@@ -137,15 +137,15 @@
 
         // Manual selection handlers
         document.getElementById('mobileBtn').addEventListener('click', () => {
-            // Redirect to mobile version
-            // window.location.href = 'mobile-version.html';
-            alert('Redirecting to mobile version...');
+            // Redirect to italian version
+            window.location.href = 'home.html';
+            alert('Gimo mo al sito italiano...');
         });
 
         document.getElementById('desktopBtn').addEventListener('click', () => {
-            // Redirect to desktop version
-            // window.location.href = 'desktop-version.html';
-            alert('Redirecting to desktop version...');
+            // Redirect to english version
+            window.location.href = 'home_eng.html';
+            alert('Redirecting to the english version...');
         });
 
         // Log the detected device
