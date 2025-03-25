@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & E-Commerce</title>
+    <link rel="stylesheet" href="Style-shop.css"> <!-- Correct CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Fondo di spazzatura informatica</h1>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="#cart">Carrello</a></li>
+            </ul>
+        </nav>
+        <button id="toggle-theme">🌓 Cambia Tema</button>
+    </header>
+
+    <div class="cart-wrapper">
+        <section id="products">
+            <h2>Prodotti</h2>
+            <div class="product">
+                <h3>Torta Banacao</h3>
+                <img src="Immagini/Prodotti/Torta banacao.jpg" alt="Torta Banacao" width="200">    
+                <p>Delizioso ciambellone con banana e cacao</p>
+                <p>Prezzo: <strong>€5.00</strong></p>
+                <label for="quantity-torta">Quantità:</label>
+                <input type="number" id="quantity-torta" name="quantity-torta" min="0" value="0">
+                <button onclick="addToCart('Torta Banacao', 5.00, 'quantity-torta', 'Immagini/Prodotti/Torta banacao.jpg')">Aggiungi al carrello</button>
+            </div>
+            <div class="product">
+                <h3>Mandorle caramellate</h3>
+                <img src="Immagini/Prodotti/Mandorle caramellate.jpg" alt="Mandorle caramellate" width="200">    
+                <p>Mandorle tostate nello zucchero bollente</p>
+                <p>Prezzo: <strong>€3.50</strong></p>
+                <label for="quantity-mandorle">Quantità:</label>
+                <input type="number" id="quantity-mandorle" name="quantity-mandorle" min="0" value="0">
+                <button onclick="addToCart('Mandorle caramellate', 3.50, 'quantity-mandorle', 'Immagini/Prodotti/Mandorle caramellate.jpg')">Aggiungi al carrello</button>
+            </div>
+            <div class="product">
+                <h3>Scoregge da fuffaguru</h3>
+                <img src="Immagini/Prodotti/Scoregge da fuffaguru.jpg" alt="Scoregge da fuffaguru" width="200">    
+                <p>Scorregge in barattolo, al sapore di finte promesse di ricchezze</p>
+                <p>Prezzo: <strong>€2.00</strong></p>
+                <label for="quantity-scoregge">Quantità:</label>
+                <input type="number" id="quantity-scoregge" name="quantity-scoregge" min="0" value="0">
+                <button onclick="addToCart('Scoregge da fuffaguru', 2.00, 'quantity-scoregge', 'Immagini/Prodotti/Scoregge da fuffaguru.jpg')">Aggiungi al carrello</button>
+            </div>
+            <div class="product">
+                <h3>Fake ass brownies cookies</h3>
+                <img src="Immagini/Prodotti/Fake ass brownies cookies.jpg" alt="Fake ass brownies cookies" width="200">    
+                <p>Quel che succede quando non separi il cioccolato per guarnire e quello da sciogliere per l'impasto</p>
+                <p>Prezzo: <strong>€4.00</strong></p>
+                <label for="quantity-brownies">Quantità:</label>
+                <input type="number" id="quantity-brownies" name="quantity-brownies" min="0" value="0">
+                <button onclick="addToCart('Fake ass brownies cookies', 4.00, 'quantity-brownies', 'Immagini/Prodotti/Fake ass brownies cookies.jpg')">Aggiungi al carrello</button>
+            </div>
+        </section>
+
+        <aside id="cart-sidebar">
+            <h2>Carrello</h2>
+            <p id="empty-cart-message">Il tuo carrello è vuoto.</p>
+            <ul id="cart-items"></ul>
+            <p>Totale: €<span id="cart-total">0.00</span></p>
+            <button id="clear-cart" onclick="clearCart()">Svuota Carrello</button>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Monnezza - Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // Cart data
+        let cart = [];
+
+        // Function to add a product to the cart
+        function addToCart(productName, price, quantityId, imageUrl) {
+            const quantityInput = document.getElementById(quantityId);
+            const quantity = parseInt(quantityInput.value);
+            if (quantity > 0) {
+                // Check if the product is already in the cart
+                const existingProductIndex = cart.findIndex(item => item.name === productName);
+                if (existingProductIndex !== -1) {
+                    // Update the quantity if the product is already in the cart
+                    cart[existingProductIndex].quantity = quantity;
+                } else {
+                    // Add the product to the cart if it's not already there
+                    const item = { name: productName, price: price, quantity: quantity, image: imageUrl };
+                    cart.push(item);
+                }
+                updateCart();
+                quantityInput.value = 0; // Reset the quantity input
+            }
+        }
+
+        // Function to update the cart display
+        function updateCart() {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const emptyCartMessage = document.getElementById("empty-cart-message");
+    const clearCartButton = document.getElementById("clear-cart");
+    const cartSidebar = document.getElementById("cart-sidebar");
+    const productsSection = document.getElementById("products");
+    let total = 0;
+
+    // Clear the cart items list
+    cartItems.innerHTML = "";
+
+    // Add each item to the cart display
+    cart.forEach((item, index) => {
+        const listItem = document.createElement("li");
+
+        // Create an image element for the product
+        const productImage = document.createElement("img");
+        productImage.src = item.image;
+        productImage.alt = item.name;
+        productImage.width = 50; // Set a small width for the image
+        productImage.style.marginRight = "10px"; // Add some spacing
+
+        // Create a text node for the product details
+        const productDetails = document.createTextNode(`${item.name} x ${item.quantity} - €${(item.price * item.quantity).toFixed(2)}`);
+
+        // Append the image and text to the list item
+        listItem.appendChild(productImage);
+        listItem.appendChild(productDetails);
+
+        // Append the list item to the cart
+        cartItems.appendChild(listItem);
+
+        // Update the total amount
+        total += item.price * item.quantity;
+    });
+
+    // Update the total amount
+    cartTotal.textContent = total.toFixed(2);
+
+    // Show or hide the empty cart message and clear cart button
+    if (cart.length > 0) {
+        emptyCartMessage.style.display = "none"; // Hide the message
+        clearCartButton.style.display = "block"; // Show the clear cart button
+        cartSidebar.classList.add("visible"); // Show the cart sidebar
+        productsSection.classList.add("cart-visible"); // Shift the products section
+    } else {
+        emptyCartMessage.style.display = "block"; // Show the message
+        clearCartButton.style.display = "none"; // Hide the clear cart button
+        cartSidebar.classList.remove("visible"); // Hide the cart sidebar
+        productsSection.classList.remove("cart-visible"); // Reset the products section
+    }
+}
+
+        // Function to clear the cart
+        function clearCart() {
+            cart = []; // Reset the cart array
+            updateCart(); // Update the cart display
+        }
+
+        // Initialize the cart display
+        updateCart();
+    </script>
+    <script src="cart_script.js"></script>
+</body>
+</html>

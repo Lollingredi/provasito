@@ -1,0 +1,252 @@
+/* Minimal Light Theme (Default) - Grayscale */
+body {
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark gray text */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    padding-top: 140px; /* Increased padding to add even more space below the header */
+}
+
+/* Header Section */
+header {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0; /* Light gray border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed; /* Make header sticky */
+    top: 0; /* Stick to the top of the page */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure header stays above other content */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333333; /* Dark gray text */
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333; /* Dark gray text */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+nav ul li a:hover {
+    color: #555555; /* Medium gray on hover */
+}
+
+/* Change Theme Button */
+#toggle-theme {
+    background-color: #555555; /* Medium gray background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    position: absolute; /* Position the button absolutely */
+    top: 20px; /* Align to the top */
+    left: 20px; /* Align to the left */
+}
+
+#toggle-theme:hover {
+    background-color: #777777; /* Slightly darker gray on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+#languaghe-theme {
+    background-color: #555555; /* Medium gray background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    position: absolute; /* Position the button absolutely */
+    top: 40px; /* Align to the top */
+    left: 20px; /* Align to the left */
+}
+
+#toggle-theme:hover {
+    background-color: #777777; /* Slightly darker gray on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Main Content Sections */
+section {
+    padding: 40px 20px; /* Increased padding */
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animation */
+    text-align: center; /* Center-align all content inside sections */
+}
+
+section:hover {
+    transform: translateY(-5px); /* Lift section on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 20px; /* Increased spacing */
+    color: #333333; /* Dark gray text */
+}
+
+section p {
+    font-size: 1rem;
+    color: #555555; /* Medium gray text */
+}
+
+/* Product Cards */
+.product {
+    border: 1px solid #e0e0e0; /* Light gray border */
+    padding: 20px; /* Increased padding */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f8f9fa; /* Light gray background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animation */
+    text-align: center; /* Center-align product content */
+}
+
+.product:hover {
+    transform: translateY(-5px); /* Lift product on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+.product img {
+    display: block;
+    margin: 10px auto; /* Center images */
+    border-radius: 10px; /* Rounded corners */
+    max-width: 100%; /* Responsive images */
+    height: auto;
+}
+
+.product h3 {
+    margin: 10px 0; /* Add spacing around product titles */
+}
+
+.product button {
+    display: block; /* Make button a block element */
+    margin: 10px auto; /* Center-align button */
+}
+
+/* Buttons */
+button {
+    background-color: #555555; /* Medium gray background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+button:hover {
+    background-color: #777777; /* Slightly darker gray on hover */
+}
+
+/* Footer Section */
+footer {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px; /* Increased padding */
+    text-align: center;
+    border-top: 1px solid #e0e0e0; /* Light gray border */
+    margin-top: 40px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme switching */
+}
+
+footer p {
+    color: #555555; /* Medium gray text */
+    margin: 0; /* Remove default margin */
+}
+
+/* Minimal Dark Theme - Grayscale */
+body.dark-theme {
+    background-color: #121212; /* Very dark gray background */
+    color: #e0e0e0; /* Light gray text */
+}
+
+body.dark-theme header {
+    background-color: #1f1f1f; /* Dark gray background */
+    border-bottom: 1px solid #333333; /* Medium gray border */
+}
+
+body.dark-theme header h1 {
+    color: #e0e0e0; /* Light gray text */
+}
+
+body.dark-theme nav ul li a {
+    color: #e0e0e0; /* Light gray text */
+}
+
+body.dark-theme nav ul li a:hover {
+    color: #cccccc; /* Lighter gray on hover */
+}
+
+body.dark-theme section {
+    background-color: #1f1f1f; /* Dark gray background */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle shadow */
+}
+
+body.dark-theme section:hover {
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15); /* Enhanced shadow on hover */
+}
+
+body.dark-theme section h2 {
+    color: #e0e0e0; /* Light gray text */
+}
+
+body.dark-theme section p {
+    color: #cccccc; /* Lighter gray text */
+}
+
+body.dark-theme .product {
+    border: 1px solid #333333; /* Medium gray border */
+    background-color: #2a2a2a; /* Slightly lighter dark gray background */
+}
+
+body.dark-theme .product:hover {
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1); /* Enhanced shadow on hover */
+}
+
+body.dark-theme button {
+    background-color: #333333; /* Medium gray background */
+    color: #ffffff; /* White text */
+}
+
+body.dark-theme button:hover {
+    background-color: #555555; /* Slightly lighter gray on hover */
+}
+
+body.dark-theme footer {
+    background-color: #1f1f1f; /* Dark gray background */
+    border-top: 1px solid #333333; /* Medium gray border */
+}
+
+body.dark-theme footer p {
+    color: #cccccc; /* Lighter gray text */
+}
