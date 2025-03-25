@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Detection</title>
+    <style>
+        /* Base styles that work for all devices */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #mobileBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #desktopBtn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile-specific styles (applies to screens up to 768px wide) */
+        @media only screen and (max-width: 768px) {
+            body::after {
+                content: "Mobile device detected";
+                display: none; /* Hidden but detectable in CSS */
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        /* Desktop-specific styles (applies to screens wider than 768px) */
+        @media only screen and (min-width: 769px) {
+            body::after {
+                content: "Desktop device detected";
+                display: none; /* Hidden but detectable in CSS */
+            }
+
+            .container {
+                max-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>On what device are you viewing this site?</h1>
+        <div class="btn-group">
+            <button id="mobileBtn">Mobile</button>
+            <button id="desktopBtn">Desktop</button>
+        </div>
+    </div>
+
+    <script>
+        // Device detection function
+        function detectDevice() {
+            // Check CSS content to determine device
+            const body = document.querySelector('body');
+            const device = window.getComputedStyle(body, '::after').content;
+            
+            // Alternative method using window width
+            const isMobile = window.innerWidth <= 768;
+            
+            return isMobile ? 'mobile' : 'desktop';
+        }
+
+        // Automatic redirection based on device (uncomment to enable)
+        /*
+        window.addEventListener('DOMContentLoaded', () => {
+            const device = detectDevice();
+            if (device === 'mobile') {
+                // window.location.href = 'mobile-version.html';
+            } else {
+                // window.location.href = 'desktop-version.html';
+            }
+        });
+        */
+
+        // Manual selection handlers
+        document.getElementById('mobileBtn').addEventListener('click', () => {
+            // Redirect to mobile version
+            // window.location.href = 'mobile-version.html';
+            alert('Redirecting to mobile version...');
+        });
+
+        document.getElementById('desktopBtn').addEventListener('click', () => {
+            // Redirect to desktop version
+            // window.location.href = 'desktop-version.html';
+            alert('Redirecting to desktop version...');
+        });
+
+        // Log the detected device
+        console.log('Detected device:', detectDevice());
+    </script>
+</body>
+</html>
